@@ -18,7 +18,10 @@ public class RegisterPeople {
     public List<People> fetchAllPeople(){
         return repository.findAll();
     }
-    
-    
+
+    @Transactional
+    public People toSave(People people){
+        return repository.save(people);
+    }
 
 }

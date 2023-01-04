@@ -3,9 +3,8 @@ package com.attornatus.api.controller;
 import com.attornatus.domain.model.People;
 import com.attornatus.domain.service.RegisterPeople;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,6 +18,12 @@ public class PeopleController {
     @GetMapping
     public List<People> list(){
         return  registerPeople.fetchAllPeople();
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public People add(@RequestBody People people){
+        return registerPeople.toSave(people);
     }
 
 }
