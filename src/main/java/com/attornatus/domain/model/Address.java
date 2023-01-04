@@ -20,7 +20,7 @@ public class Address {
 
 
     @ManyToOne
-    @JoinColumn(nullable = false,name = "people_id")
-    private People people;
+    @JoinColumn(nullable = false,name = "person_id")
+    private Person person;
 
 }
