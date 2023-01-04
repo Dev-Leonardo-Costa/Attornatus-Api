@@ -18,7 +18,7 @@ public class PeopleController {
 
     @GetMapping
     public List<People> list(){
-        return  registerPeople.buscarTodos();
+        return  registerPeople.fetchAllPeople();
     }
 
 }

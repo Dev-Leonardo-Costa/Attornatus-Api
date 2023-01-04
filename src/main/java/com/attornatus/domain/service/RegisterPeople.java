@@ -15,8 +15,10 @@ public class RegisterPeople {
     private PeopleRepository repository;
 
     @Transactional
-    public List<People> buscarTodos(){
+    public List<People> fetchAllPeople(){
         return repository.findAll();
     }
+    
+    
 
 }
