@@ -1,7 +1,7 @@
 package com.attornatus.api.controller;
 
+import com.attornatus.domain.exception.AddressNotFoundException;
 import com.attornatus.domain.exception.BusinessException;
-import com.attornatus.domain.exception.PersonNotFoundException;
 import com.attornatus.domain.model.Person;
 import com.attornatus.domain.repository.PersonRepository;
 import com.attornatus.domain.service.RegisterPerson;
@@ -43,8 +43,8 @@ public class PersonController {
             Person currentPerson = registerPerson.seekOrFailPerson(personId);
             BeanUtils.copyProperties(person, currentPerson, "id");
             return registerPerson.toSave(currentPerson);
-        } catch (PersonNotFoundException ex) {
-            throw new BusinessException(ex.getMessage());
+        }catch (AddressNotFoundException ex){
+            throw new BusinessException(ex.getMessage(), ex);
         }
     }
 
