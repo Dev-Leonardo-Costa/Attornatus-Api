@@ -1,14 +1,20 @@
 package com.attornatus.domain.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
+@NoArgsConstructor
+@AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Data
 @Entity
@@ -22,10 +28,14 @@ public class Person {
     @Column(nullable = false)
     private String name;
 
-    @JsonFormat(pattern = "dd/MM/yyyy")
-    private Date dateBirth;
+    private LocalDate dateBirth = LocalDate.now();
 
-//    @JsonIgnore
+    @CreationTimestamp
+    private OffsetDateTime dateRegistration;
+
+    @UpdateTimestamp
+    private OffsetDateTime dateRegistrationUpdate;
+
     @OneToMany(mappedBy = "person")
     private List<Address> addresses = new ArrayList<>();
 }
