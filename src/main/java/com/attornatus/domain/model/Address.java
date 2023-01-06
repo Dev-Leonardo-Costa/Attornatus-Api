@@ -1,13 +1,17 @@
 package com.attornatus.domain.model;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@Data
 @Entity
 public class Address {
 
@@ -33,3 +37,5 @@ public class Address {
     private Person person;
 
 }
+
+
