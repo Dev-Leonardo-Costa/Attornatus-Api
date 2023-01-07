@@ -28,7 +28,6 @@ public class PersonController {
     @Autowired
     private PersonDTOInputDisassembler personDTOInputDisassembler;
 
-
     @GetMapping
     public List<PersonDTO> list() {
         return personDTOAssembler.toCollectionDTO(registerPerson.fetchAllPerson());
@@ -44,6 +43,7 @@ public class PersonController {
     @GetMapping("/{personId}")
     public PersonDTO consult(@PathVariable Long personId) {
         Person person = registerPerson.seekOrFailPerson(personId);
+        System.out.println(person);
         return personDTOAssembler.toModel(person);
     }
 

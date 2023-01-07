@@ -16,8 +16,4 @@ public class AddressDTOInputDisassembler {
         return modelMapper.map(addressDTOInput, Address.class);
     }
 
-    public void copyToDomainObject(AddressDTOInput addressDTOInput, Address address) {
-        modelMapper.map(addressDTOInput, address);
-    }
-
 }
