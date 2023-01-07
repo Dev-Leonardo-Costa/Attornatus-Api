@@ -1,17 +1,15 @@
 package com.attornatus.domain.model;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Data
+@Getter
+@Setter
 @Entity
 public class Address {
 
@@ -31,6 +29,8 @@ public class Address {
 
     @Column(nullable = false)
     private String city;
+
+    private Boolean addressMain;
 
     @ManyToOne
     @JoinColumn(nullable = false, name = "person_id")
