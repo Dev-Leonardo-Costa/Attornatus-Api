@@ -1,21 +1,16 @@
-package com.attornatus.dto;
+package com.attornatus.dto.input;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class AddressDTO {
-
-    private Long id;
+public class AddressDTOInput {
 
     private String place;
-
     private String zipCode;
-
     private int number;
-
     private String city;
-
     private Boolean addressMain;
+
 }
