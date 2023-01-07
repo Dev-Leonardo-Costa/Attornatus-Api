@@ -32,6 +32,8 @@ public class Address {
     @Column(nullable = false)
     private String city;
 
+    private Boolean addressMain;
+
     @ManyToOne
     @JoinColumn(nullable = false, name = "person_id")
     private Person person;

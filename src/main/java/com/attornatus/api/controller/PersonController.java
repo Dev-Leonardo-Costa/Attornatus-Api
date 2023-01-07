@@ -23,36 +23,35 @@ public class PersonController {
     @Autowired
     private PersonRepository personRepository;
     @Autowired
-    private PersonDTOAssembler assemblerDTO;
+    private PersonDTOAssembler personDTOAssembler;
 
     @Autowired
     private PersonDTOInputDisassembler personDTOInputDisassembler;
 
+
     @GetMapping
     public List<PersonDTO> list() {
-        return assemblerDTO.toCollectionDTO(registerPerson.fetchAllPerson());
+        return personDTOAssembler.toCollectionDTO(registerPerson.fetchAllPerson());
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public PersonDTO create(@RequestBody PersonDTOInput personInput) {
         Person person = personDTOInputDisassembler.toDomainObject(personInput);
-        return assemblerDTO.toModel(registerPerson.toSave(person));
+        return personDTOAssembler.toModel(registerPerson.toSave(person));
     }
 
     @GetMapping("/{personId}")
     public PersonDTO consult(@PathVariable Long personId) {
         Person person = registerPerson.seekOrFailPerson(personId);
-        return assemblerDTO.toModel(person);
+        return personDTOAssembler.toModel(person);
     }
 
     @PutMapping("/{personId}")
     public PersonDTO edit(@PathVariable Long personId, @RequestBody PersonDTOInput personInput) {
-//        Person person = disassemblerDTO.toDomainObject(personInput);
         Person currentPerson = registerPerson.seekOrFailPerson(personId);
         personDTOInputDisassembler.copyToDomainObject(personInput, currentPerson);
-//        BeanUtils.copyProperties(person, currentPerson, "id");
-        return assemblerDTO.toModel(registerPerson.toSave(currentPerson));
+        return personDTOAssembler.toModel(registerPerson.toSave(currentPerson));
     }
 
 }
