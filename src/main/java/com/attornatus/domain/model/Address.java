@@ -19,7 +19,7 @@ public class Address {
     private Long id;
 
     @Column(nullable = false)
-    private String place;
+    private String publicPlace;
 
     @Column(nullable = false)
     private String zipCode;

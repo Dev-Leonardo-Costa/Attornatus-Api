@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -42,7 +43,7 @@ public class AddressController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public AddressDTO create(@PathVariable Long personId, @RequestBody AddressDTOInput addressDTOInput){
+    public AddressDTO create(@PathVariable Long personId, @RequestBody @Valid AddressDTOInput addressDTOInput){
         Person person = registerPerson.seekOrFailPerson(personId);
         Address address = addressDTOInputDisassembler.toDomainObject(addressDTOInput);
         address = registerAddress.toSave(address,personId, person);
