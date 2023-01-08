@@ -9,7 +9,7 @@ public class AddressDTO {
 
     private Long id;
 
-    private String place;
+    private String publicPlace;
 
     private String zipCode;
 
