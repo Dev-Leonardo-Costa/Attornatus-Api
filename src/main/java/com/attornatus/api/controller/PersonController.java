@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -35,7 +36,7 @@ public class PersonController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public PersonDTO create(@RequestBody PersonDTOInput personInput) {
+    public PersonDTO create(@RequestBody @Valid PersonDTOInput personInput) {
         Person person = personDTOInputDisassembler.toDomainObject(personInput);
         return personDTOAssembler.toModel(registerPerson.toSave(person));
     }
@@ -48,7 +49,7 @@ public class PersonController {
     }
 
     @PutMapping("/{personId}")
-    public PersonDTO edit(@PathVariable Long personId, @RequestBody PersonDTOInput personInput) {
+    public PersonDTO edit(@PathVariable Long personId, @RequestBody @Valid  PersonDTOInput personInput) {
         Person currentPerson = registerPerson.seekOrFailPerson(personId);
         personDTOInputDisassembler.copyToDomainObject(personInput, currentPerson);
         return personDTOAssembler.toModel(registerPerson.toSave(currentPerson));
