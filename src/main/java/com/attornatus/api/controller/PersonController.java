@@ -1,5 +1,6 @@
 package com.attornatus.api.controller;
 
+import com.attornatus.api.controller.openapi.PersonOpenApi;
 import com.attornatus.domain.model.Person;
 import com.attornatus.domain.repository.PersonRepository;
 import com.attornatus.domain.service.RegisterPerson;
@@ -9,14 +10,15 @@ import com.attornatus.dto.assembler.PersonDTOInputDisassembler;
 import com.attornatus.dto.input.PersonDTOInput;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/persons")
-public class PersonController {
+@RequestMapping(path = "/persons", produces = MediaType.APPLICATION_JSON_VALUE)
+public class PersonController implements PersonOpenApi {
 
     @Autowired
     private RegisterPerson registerPerson;

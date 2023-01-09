@@ -1,8 +1,10 @@
 package com.attornatus.dto;
 
+import io.swagger.annotations.ApiModel;
 import lombok.Getter;
 import lombok.Setter;
 
+@ApiModel("Object Address")
 @Getter
 @Setter
 public class AddressDTO {
