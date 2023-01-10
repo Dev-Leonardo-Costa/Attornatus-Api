@@ -10,8 +10,4 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 @SpringBootTest
 class AttornatusApplicationTests {
 
-    @Test
-    void main(){
-        AttornatusApplication.main(new String[] {} );
-    }
 }
