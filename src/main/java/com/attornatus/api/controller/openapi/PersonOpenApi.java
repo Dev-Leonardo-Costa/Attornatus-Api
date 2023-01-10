@@ -28,7 +28,7 @@ public interface PersonOpenApi {
             @ApiResponse(responseCode = "400", description = "ID da pessoa é inválido", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Problem.class)))
     })
 
-    public PersonDTO consult(@ApiParam("ID de uma pessoa")  Long personId);
+    public PersonDTO consult(@ApiParam("ID de uma pessoa")  Integer personId);
 
     @ApiOperation("Atualiza uma pessoa por ID")
     @ApiResponses({
@@ -36,6 +36,6 @@ public interface PersonOpenApi {
             @ApiResponse(responseCode = "400", description = "ID da pessoa é inválido", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Problem.class)))
     })
 
-    public PersonDTO edit(@ApiParam("ID de uma pessoa") Long personId, PersonDTOInput personInput);
+    public PersonDTO edit(@ApiParam("ID de uma pessoa") Integer personId, PersonDTOInput personInput);
 
 }

@@ -44,14 +44,14 @@ public class PersonController implements PersonOpenApi {
     }
 
     @GetMapping("/{personId}")
-    public PersonDTO consult(@PathVariable Long personId) {
+    public PersonDTO consult(@PathVariable Integer personId) {
         Person person = registerPerson.seekOrFailPerson(personId);
         System.out.println(person);
         return personDTOAssembler.toModel(person);
     }
 
     @PutMapping("/{personId}")
-    public PersonDTO edit(@PathVariable Long personId, @RequestBody @Valid  PersonDTOInput personInput) {
+    public PersonDTO edit(@PathVariable Integer personId, @RequestBody @Valid  PersonDTOInput personInput) {
         Person currentPerson = registerPerson.seekOrFailPerson(personId);
         personDTOInputDisassembler.copyToDomainObject(personInput, currentPerson);
         return personDTOAssembler.toModel(registerPerson.toSave(currentPerson));
