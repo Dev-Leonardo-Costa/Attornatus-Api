@@ -6,7 +6,7 @@ public class PersonNotFoundException extends EntityNotFoundException{
     public PersonNotFoundException(String message) {
         super(message);
     }
-    public PersonNotFoundException(Long personId) {
+    public PersonNotFoundException(Integer personId) {
         this(String.format("Não existe um cadastro de pessoa com código %d", personId));
     }
 

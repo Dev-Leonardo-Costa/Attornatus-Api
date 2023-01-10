@@ -41,7 +41,7 @@ public class AddressController implements AddressOpenApi {
 
     @ApiOperation("Lista os endereços de uma pessoa através do ID")
     @GetMapping
-    public List<AddressDTO> listPersonAddress(@ApiParam("ID da pessoa") @PathVariable Long personId) {
+    public List<AddressDTO> listPersonAddress(@ApiParam("ID da pessoa") @PathVariable Integer personId) {
         Person person = registerPerson.seekOrFailPerson(personId);
         List<Address> AllAddresses = addressRepository.findByPerson(person);
         return addressDTOAssembler.toCollectionDTO(AllAddresses);
@@ -53,7 +53,7 @@ public class AddressController implements AddressOpenApi {
     })
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public AddressDTO create(@ApiParam("ID de uma pessoa") @PathVariable Long personId, @RequestBody @Valid AddressDTOInput addressDTOInput){
+    public AddressDTO create(@ApiParam("ID de uma pessoa") @PathVariable Integer personId, @RequestBody @Valid AddressDTOInput addressDTOInput){
         Person person = registerPerson.seekOrFailPerson(personId);
         Address address = addressDTOInputDisassembler.toDomainObject(addressDTOInput);
         address = registerAddress.toSave(address,personId, person);
@@ -63,7 +63,7 @@ public class AddressController implements AddressOpenApi {
     @ApiOperation("Faz escolha do endereço principal através ID da Pessoa e o ID do Endereço")
     @PutMapping("/address-main/{addressId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void addressMain(@ApiParam("ID da pessoa") @PathVariable Long personId, @ApiParam("ID do endereço")@PathVariable Long addressId){
+    public void addressMain(@ApiParam("ID da pessoa") @PathVariable Integer personId, @ApiParam("ID do endereço")@PathVariable Integer addressId){
         Person person = registerPerson.seekOrFailPerson(personId);
         registerAddress.mainAddress(addressId,personId, person);
     }

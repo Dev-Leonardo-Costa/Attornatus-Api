@@ -7,7 +7,7 @@ public class AddressNotFoundException extends EntityNotFoundException{
         super(message);
     }
 
-    public AddressNotFoundException(Long enderecoId, Long personId) {
+    public AddressNotFoundException(Integer enderecoId, Integer personId) {
         this(String.format("Não existe um cadastro de endereço com código %d para pessoa de código %d", enderecoId, personId));
     }
 

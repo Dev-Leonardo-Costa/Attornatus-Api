@@ -12,7 +12,7 @@ import java.time.OffsetDateTime;
 @Setter
 public class PersonDTO {
 
-    private Long id;
+    private Integer id;
     private String name;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
