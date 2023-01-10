@@ -1,7 +1,5 @@
 package com.attornatus.domain.service;
 
-import com.attornatus.domain.exception.AddressNotFoundException;
-import com.attornatus.domain.exception.EntityNotFoundException;
 import com.attornatus.domain.exception.PersonNotFoundException;
 import com.attornatus.domain.model.Person;
 import com.attornatus.domain.repository.PersonRepository;
@@ -17,8 +15,10 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
@@ -85,7 +85,6 @@ class RegisterPersonTest {
         assertEquals(ID, response.getId());
         assertEquals(DATE_BIRTH, response.getDateBirth());
     }
-
 
     @Test
     void whenCreateThenReturnAnDataIntegratyValiolationException() {

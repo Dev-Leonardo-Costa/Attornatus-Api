@@ -14,6 +14,7 @@ public interface AddressOpenApi {
     @ApiOperation("Lista os endereços de uma pessoa através do ID")
     public List<AddressDTO> listPersonAddress(@ApiParam("ID de uma pessoa") Integer personId);
 
+
     @ApiOperation("Cadastra um endereço através do ID da pessoa")
     @ApiResponses({@ApiResponse(code = 404, message = "Pessoa não encontrada", response = Problem.class)})
     public AddressDTO create(@ApiParam("ID de uma pessoa") @PathVariable Integer personId, AddressDTOInput addressDTOInput);
