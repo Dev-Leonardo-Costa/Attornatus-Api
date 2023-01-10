@@ -21,7 +21,7 @@ public class Person {
     @EqualsAndHashCode.Include
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @Column(nullable = false)
     private String name;
@@ -36,4 +36,10 @@ public class Person {
 
     @OneToMany(mappedBy = "person")
     private List<Address> addresses = new ArrayList<>();
+
+    public Person(Integer id, String name, LocalDate dateBirth) {
+        this.id = id;
+        this.name = name;
+        this.dateBirth = dateBirth;
+    }
 }

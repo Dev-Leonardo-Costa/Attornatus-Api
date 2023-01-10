@@ -17,7 +17,7 @@ public class RegisterAddress {
     private AddressRepository repository;
 
     @Transactional
-    public Address toSave(Address address, Long personId, Person person) {
+    public Address toSave(Address address, Integer personId, Person person) {
         address.setPerson(person);
         repository.save(address);
 
@@ -28,8 +28,9 @@ public class RegisterAddress {
         return repository.save(address);
     }
 
+
     @Transactional
-    public void mainAddress(Long addressId, Long personId, Person person) {
+    public void mainAddress(Integer addressId, Integer personId, Person person) {
         Address addressCurrent = seekOrFailAddress(addressId, personId);
         List<Address> addresses = repository.findByPerson(person);
 
@@ -48,7 +49,7 @@ public class RegisterAddress {
         repository.save(addressCurrent);
     }
 
-    public Address seekOrFailAddress(Long addressId, Long personId) {
+    public Address seekOrFailAddress(Integer addressId, Integer personId) {
         return repository.findById(addressId)
                 .orElseThrow(() -> new AddressNotFoundException(addressId, personId));
     }

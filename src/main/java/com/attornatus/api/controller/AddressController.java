@@ -1,7 +1,6 @@
 package com.attornatus.api.controller;
 
 import com.attornatus.api.controller.openapi.AddressOpenApi;
-import com.attornatus.api.exceptionhandler.Problem;
 import com.attornatus.domain.model.Address;
 import com.attornatus.domain.model.Person;
 import com.attornatus.domain.repository.AddressRepository;
@@ -11,7 +10,8 @@ import com.attornatus.dto.AddressDTO;
 import com.attornatus.dto.assembler.AddressDTOAssembler;
 import com.attornatus.dto.assembler.AddressDTOInputDisassembler;
 import com.attornatus.dto.input.AddressDTOInput;
-import io.swagger.annotations.*;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -38,32 +38,25 @@ public class AddressController implements AddressOpenApi {
     private RegisterAddress registerAddress;
     @Autowired
     private AddressRepository addressRepository;
-
-    @ApiOperation("Lista os endereços de uma pessoa através do ID")
     @GetMapping
-    public List<AddressDTO> listPersonAddress(@ApiParam("ID da pessoa") @PathVariable Long personId) {
+    public List<AddressDTO> listPersonAddress(@ApiParam("ID da pessoa") @PathVariable Integer personId) {
         Person person = registerPerson.seekOrFailPerson(personId);
         List<Address> AllAddresses = addressRepository.findByPerson(person);
         return addressDTOAssembler.toCollectionDTO(AllAddresses);
     }
 
-    @ApiOperation("Cadastra um endereço através do ID da pessoa")
-    @ApiResponses({
-            @ApiResponse(code = 404, message = "Pessoa não encontrada", response = Problem.class)
-    })
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public AddressDTO create(@ApiParam("ID de uma pessoa") @PathVariable Long personId, @RequestBody @Valid AddressDTOInput addressDTOInput){
+    public AddressDTO create(@PathVariable Integer personId, @RequestBody @Valid AddressDTOInput addressDTOInput){
         Person person = registerPerson.seekOrFailPerson(personId);
         Address address = addressDTOInputDisassembler.toDomainObject(addressDTOInput);
         address = registerAddress.toSave(address,personId, person);
         return  addressDTOAssembler.toModel(address);
     }
 
-    @ApiOperation("Faz escolha do endereço principal através ID da Pessoa e o ID do Endereço")
     @PutMapping("/address-main/{addressId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void addressMain(@ApiParam("ID da pessoa") @PathVariable Long personId, @ApiParam("ID do endereço")@PathVariable Long addressId){
+    public void addressMain(@PathVariable Integer personId, @PathVariable Integer addressId){
         Person person = registerPerson.seekOrFailPerson(personId);
         registerAddress.mainAddress(addressId,personId, person);
     }

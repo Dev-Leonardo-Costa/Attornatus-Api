@@ -15,17 +15,19 @@ public class RegisterPerson {
     @Autowired
     private PersonRepository repository;
 
+
     @Transactional
-    public List<Person> fetchAllPerson(){
+    public List<Person> fetchAllPerson() {
         return repository.findAll();
     }
 
+
     @Transactional
-    public Person toSave(Person person){
+    public Person toSave(Person person) {
         return repository.save(person);
     }
 
-    public Person seekOrFailPerson(Long personId){
+    public Person seekOrFailPerson(Integer personId) {
         return repository.findById(personId)
                 .orElseThrow(() -> new PersonNotFoundException(personId));
     }
