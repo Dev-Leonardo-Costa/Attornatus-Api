@@ -97,7 +97,7 @@ class RegisterAddressTest {
     }
 
     @Test
-    void mainAddress(){
+    void testingThemainAddress(){
         when(addressRepository.save(any())).thenReturn(address);
         when(personRepository.save(any())).thenReturn(person);
         List<Address> addresses = addressRepository.findByPerson(person);
