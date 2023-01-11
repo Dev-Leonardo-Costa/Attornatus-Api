@@ -24,11 +24,12 @@
 9.  [H2 Data Base]()
 10. [Model Mapper]()
 11. [Junit 5]()
-12. [Commons Lang3]()
-13. [Docker]()
-14. [Postman para testes dos endpoint]()
-15. [Intelij]()
-15. [Maven]()
+12. [Mockito]()
+13. [Commons Lang3]()
+14. [Docker]()
+15. [Postman para testes dos endpoint]()
+16. [Intelij]()
+17. [Maven]()
 
 
 ## [LinkedIn](https://www.linkedin.com/in/leonardo-costa-3558801b4/) Autor do projeto
