@@ -12,7 +12,7 @@
 - [x] Listar endereços da pessoa
 - [x] Poder informar qual endereço é o principal da pessoa
 
-## Tecnologias utilizada
+## 🛠Tecnologias utilizada
 1.  [Java]()
 2.  [Spring Framework]()
 3.  [Jpa]()
@@ -30,6 +30,13 @@
 15. [Postman para testes dos endpoint]()
 16. [Intelij]()
 17. [Maven]()
+## Qualidade de código
+1.	Durante a implementação de uma nova funcionalidade de software solicitada, quais critérios você avalia e implementa para garantia de qualidade de software?
+
+- R: Primeiro avalio a tarefa a ser realizada com muita atenção, observo se a implementação vai causar algum impacto nas demais funcionalidade realizando testes de cobertura para garantir a qualidade de cada funcionalidade do software.    
+
+2.	Em qual etapa da implementação você considera a qualidade de software?
+- R: Em todas, não existe uma etapa de qualidade específica. Vai desde a implementação ate a execução.
 
 
 ## [LinkedIn](https://www.linkedin.com/in/leonardo-costa-3558801b4/) Autor do projeto
