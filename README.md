@@ -1,8 +1,4 @@
 # Projeto attornatus - Teste técnico back-end 
-![attornatus](https://tse3.mm.bing.net/th?id=OIP.wFjw1V82lNFlQPQzguWEBgHaHa&pid=Api&P=0)
-
-
-
 ## 💻Funcionalidades do projeto
 - [x] Criar uma pessoa
 - [x] Editar uma pessoa
